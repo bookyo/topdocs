@@ -1,0 +1,20 @@
+.v-card__text pre {
+    line-height: 1.4;
+    padding: 1.25rem 1.5rem;
+    margin: .85rem 0;
+    background-color: #282c34;
+    border-radius: 6px;
+    overflow: auto;
+}
+.v-card__text pre code {
+    margin: 0;
+    font-size: .85em;
+    color: #fff;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+.v-card__text pre code:after, .v-card__text pre code:before {
+    content: "";
+}

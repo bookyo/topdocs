@@ -1,0 +1,1 @@
+一个开源的基于graphql、nuxtjs、mongodb、keystonejs的实时在线文档编辑系统，可用作各种在线文档编辑和展示，支持markdown语法。
