@@ -1,5 +1,13 @@
 一个开源的基于graphql、nuxtjs、mongodb、keystonejs的实时在线文档编辑系统，可用作各种在线文档编辑和展示，支持markdown语法。
 
+## 图示
+![首页](https://images.gitee.com/uploads/images/2019/1215/210901_933f0e9a_145248.png "xxx.png")
+![内页](https://images.gitee.com/uploads/images/2019/1215/210915_a90b1878_145248.png "zz.png")
+![移动端展示](https://images.gitee.com/uploads/images/2019/1215/211214_851567b9_145248.jpeg "qq_pic_merged_1576415337567_副本.jpg")
+
+## 差异化功能
+动态实时编辑系统，移动优先，服务端渲染，针对SEO优化。适合小到大型项目的在线文档官网。
+
 ## 安装方法
 Ubuntu 18.04 :
 nodejs安装
@@ -18,7 +26,7 @@ mongo
 use admin
 db.createUser( { user: "admin", pwd: "<Enter a secure password>", roles: [ { role: "root", db: "admin" } ] } )
 use topdocs
-db.createUser( { user: "topdocs", pwd: "<Enter a secure password>", roles: [ { role: "readWrite", db: "topdocs" } ] } )
+db.createUser( { user: "topdocs", pwd: "topdocs", roles: [ { role: "readWrite", db: "topdocs" } ] } )
 exit
 vim /etc/mongod.conf
 <!-- append lines -->
