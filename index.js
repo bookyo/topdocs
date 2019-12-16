@@ -192,11 +192,15 @@ module.exports = {
         ],
         link: [
           { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+          { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css' },
           // {
           //   rel: "stylesheet",
           //   href:
           //     "https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css"
           // }
+        ],
+        script: [
+          { src: 'https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js'}
         ],
       },
       /*

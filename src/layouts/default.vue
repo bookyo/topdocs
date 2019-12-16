@@ -77,6 +77,11 @@ export default {
       this.$router.push('/search');
     }
   },
+  mounted() {
+    if (document.getElementsByClassName('v-navigation-drawer__content')) {
+      new SimpleBar(document.getElementsByClassName('v-navigation-drawer__content')[0]);
+    }
+  },
   watch: {
     //监听路由变化
     $route(to, from) {
