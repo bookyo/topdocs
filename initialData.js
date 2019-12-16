@@ -7,6 +7,7 @@ module.exports = {
     }],
     Setting: [{
         name: "跨世代文档编辑系统",
+        seotitle: '跨世代在线文档编辑系统，基于nodejs/graphql/mongodb开发',
         host: "http://127.0.0.1:3000",
         keywords: "跨世代文档系统",
         description: "跨世代文档编辑系统是新一代的实时在线动态文档系统，基于graphql、nodejs、mongod、keystonejs、nuxtjs、vue开发的markdown语法服务端渲染文档系统。",

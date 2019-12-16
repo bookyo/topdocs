@@ -107,6 +107,7 @@ keystone.createList('Setting', {
   fields: {
     host: { type: Text, },
     name: { type: Text, defaultValue: "跨世代文档编辑系统" },
+    seotitle: { type: Text, },
     keywords: { type: Text, },
     description: { type: Text, defaultValue: "跨世代文档编辑系统是新一代的实时在线动态文档系统，支持MARKDOWN语法。" },
     github: { type: Text },

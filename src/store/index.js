@@ -31,6 +31,7 @@ export const actions = {
                     allSettings {
                         host,
                         name,
+                        seotitle,
                         keywords,
                         github,
                         description,

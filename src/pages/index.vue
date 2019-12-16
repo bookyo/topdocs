@@ -11,7 +11,7 @@
           </v-col>
         </v-row>
       </v-parallax>
-      <v-card class="mt-10">
+      <v-card class="mt-10" v-if="md.trim().length">
         <v-card-text v-html="$md.render(md)"></v-card-text>
       </v-card>
     </v-col>
@@ -58,7 +58,7 @@ export default {
   head() {
     return {
       title: this.$store.state.setting
-        ? this.$store.state.setting.name
+        ? this.$store.state.setting.seotitle
         : "跨世代文档编辑系统",
       meta: [
         { name: "keywords", content: this.$store.state.setting.keywords },
