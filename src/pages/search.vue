@@ -6,7 +6,7 @@
           <v-text-field
             v-model="q"
             solo
-            prepend-inner-icon="mdi-magnify"
+            :prepend-inner-icon="mdiMagnify"
             rounded
             background-color="#303030"
             color="primary"
@@ -31,11 +31,13 @@
 
 <script>
 import gql from "graphql-tag";
+import { mdiMagnify } from '@mdi/js'
 export default {
   data() {
     return {
       q: '',
       results: [],
+      mdiMagnify
     }
   },
   methods: {

@@ -191,11 +191,11 @@ module.exports = {
         ],
         link: [
           { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-          {
-            rel: "stylesheet",
-            href:
-              "https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css"
-          }
+          // {
+          //   rel: "stylesheet",
+          //   href:
+          //     "https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css"
+          // }
         ],
       },
       /*
@@ -218,7 +218,7 @@ module.exports = {
             icons: false
           },
           icons: {
-            iconfont: 'mdi', // default - only for display purposes
+            iconfont: 'mdiSvg', // default - only for display purposes
           },
         }]],
       markdownit: {

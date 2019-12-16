@@ -1,7 +1,7 @@
 <template>
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" app clipped>
-      <v-list shaped>
+      <v-list shaped dense>
         <v-list-group
           color="primary"
           no-action
@@ -38,10 +38,10 @@
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <v-btn icon :href="$store.state.setting.github">
-        <v-icon>mdi-github-circle</v-icon>
+        <v-icon>{{mdiGithubCircle}}</v-icon>
       </v-btn>
       <v-btn icon @click="gosearch">
-        <v-icon>mdi-magnify</v-icon>
+        <v-icon>{{mdiMagnify}}</v-icon>
       </v-btn>
     </v-app-bar>
 
@@ -63,10 +63,13 @@
 }
 </style>
 <script>
+import { mdiGithubCircle,mdiMagnify } from '@mdi/js'
 export default {
   data() {
     return {
-      drawer: this.$route.path == "/" ? false : null
+      drawer: this.$route.path == "/" ? false : null,
+      mdiGithubCircle,
+      mdiMagnify
     };
   },
   methods: {
