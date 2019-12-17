@@ -18,3 +18,25 @@
 .v-card__text pre code:after, .v-card__text pre code:before {
     content: "";
 }
+.v-card__text p {
+    color:#F5F5F5;
+}
+.v-card__text p img {
+    max-width: 100%;
+}
+.v-card__text h1 {
+    font-size: 1.25rem !important;
+    font-weight: 500;
+    line-height: 2rem;
+    letter-spacing: 0.0125em !important;
+    margin-bottom: 12px;
+    color:#fff;
+}
+.v-card__text h2,.v-card__text h3,.v-card__text h4 {
+    font-size: 1rem !important;
+    font-weight: 400;
+    letter-spacing: 0.009375em !important;
+    line-height: 1.75rem;
+    color:#fff;
+    margin-bottom:12px;
+}
