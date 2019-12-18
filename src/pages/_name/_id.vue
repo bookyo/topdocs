@@ -9,15 +9,26 @@
         <v-card-subtitle v-text="$moment(doc.createdAt).fromNow()"></v-card-subtitle>
         <v-card-text v-html="$md.render(doc.md)"></v-card-text>
         <v-card-actions>
-          <v-btn v-if="pre" link :to="`/${pre.category.name}/${pre.id}`">{{pre.name}}</v-btn>
+          <v-btn class="docs-action" v-if="pre" link :to="`/${pre.category.name}/${pre.id}`">{{pre.name}}</v-btn>
           <v-spacer></v-spacer>
-          <v-btn v-if="next" link :to="`/${next.category.name}/${next.id}`">{{next.name}}</v-btn>
+          <v-btn class="docs-action" v-if="next" link :to="`/${next.category.name}/${next.id}`">{{next.name}}</v-btn>
         </v-card-actions>
       </v-card>
     </v-col>
   </v-row>
 </template>
 <style>
+.docs-action {
+  overflow: hidden;
+  max-width: 49%;
+}
+.docs-action .v-btn__content {
+  align-self: center;
+  max-width: 100%;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 </style>
 <script>
 import gql from "graphql-tag";
