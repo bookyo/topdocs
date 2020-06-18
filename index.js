@@ -33,11 +33,11 @@ const keystone = new Keystone(config.keystoneconfig);
 // Access control functions
 const userIsAdmin = ({ authentication: { item: user } }) =>
   Boolean(user && user.isAdmin);
-const userOwnsItem = ({ authentication: { item: user } }) => {
+const userOwnsItem = ({ authentication: { item: user }, existingItem}) => {
   if (!user) {
     return false;
   }
-  return { id: user.id };
+  return existingItem.id === user.id;
 };
 const userIsAdminOrOwner = auth => {
   const isAdmin = access.userIsAdmin(auth);
