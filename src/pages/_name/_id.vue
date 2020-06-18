@@ -38,6 +38,18 @@ export default {
     const name = params.name;
     const id = params.id;
     const docs = store.state.docs;
+    const categories = store.state.categories;
+    const categoryindex = categories.findIndex(category => category.name == name);
+    const nextcategory = categories[categoryindex + 1];
+    const precategory = categories[categoryindex - 1];
+    const nextfirstdoc = docs.findIndex(doc => doc.category.name == nextcategory.name);
+    let prelastdoc;
+    for (let index = 0; index < docs.length; index++) {
+      const doc = docs[index];
+      if(precategory && doc.category.name == precategory.name) {
+        prelastdoc = doc;
+      }
+    }
     const categorydocs = docs.filter(doc => doc.category.name == name);
     const length = categorydocs.length;
     const index = categorydocs.findIndex(doc => doc.id == id);
@@ -46,6 +58,9 @@ export default {
     if (length > 0) {
       if (index == 0 && index + 1 != length) {
         next = categorydocs[index + 1];
+        if(prelastdoc) {
+          pre = prelastdoc;
+        }
       }
       if (index > 0 && index + 1 < length) {
         pre = categorydocs[index - 1];
@@ -53,6 +68,9 @@ export default {
       }
       if (index > 0 && index + 1 == length) {
         pre = categorydocs[index - 1];
+        if(nextfirstdoc) {
+          next = docs[nextfirstdoc];
+        }
       }
     }
     try {
