@@ -24,7 +24,7 @@ export const actions = {
         const response = await client.query({
             query: gql`
                 query {
-                    allCategories {
+                    allCategories(sortBy: createdAt_ASC) {
                         id,
                         name
                     },

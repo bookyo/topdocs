@@ -45,11 +45,11 @@
       </v-btn>
     </v-app-bar>
 
-    <v-content>
+    <v-main>
       <v-container :class="$route.path=='/'?'fill-height':''" fluid>
         <nuxt />
       </v-container>
-    </v-content>
+    </v-main>
 
     <v-footer app>
       <span>&copy; {{new Date().getFullYear() + ' ' + $store.state.setting.name}}</span>

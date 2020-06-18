@@ -67,7 +67,7 @@ keystone.createList('Image', {
   plugins: [
     atTracking(),
   ],
-  label: '附件'
+  label: 'File'
 })
 keystone.createList('Doc', {
   schemaDoc: '文档',
@@ -84,7 +84,7 @@ keystone.createList('Doc', {
   plugins: [
     atTracking(),
   ],
-  label: '文档'
+  label: 'Doc'
 });
 keystone.createList('Category', {
   schemaDoc: '文档分类',
@@ -99,10 +99,10 @@ keystone.createList('Category', {
   plugins: [
     atTracking(),
   ],
-  label: '文档分类'
+  label: 'Category'
 });
 keystone.createList('Setting', {
-  label: '设置',
+  label: 'Setting',
   schemaDoc: 'CMS的核心设置',
   fields: {
     host: { type: Text, },
@@ -124,7 +124,7 @@ keystone.createList('Setting', {
 })
 
 keystone.createList('User', {
-  label: '用户',
+  label: 'User',
   fields: {
     name: { type: Text, isUnique: true },
     email: {
