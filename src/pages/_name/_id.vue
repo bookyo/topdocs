@@ -42,7 +42,10 @@ export default {
     const categoryindex = categories.findIndex(category => category.name == name);
     const nextcategory = categories[categoryindex + 1];
     const precategory = categories[categoryindex - 1];
-    const nextfirstdoc = docs.findIndex(doc => doc.category.name == nextcategory.name);
+    let nextfirstdoc;
+    if(nextcategory) {
+      nextfirstdoc = docs.findIndex(doc => doc.category.name == nextcategory.name);
+    }
     let prelastdoc;
     for (let index = 0; index < docs.length; index++) {
       const doc = docs[index];
