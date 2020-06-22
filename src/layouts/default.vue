@@ -46,7 +46,7 @@
     </v-app-bar>
 
     <v-main>
-      <v-container :class="$route.path=='/'?'fill-height':''" fluid>
+      <v-container fluid>
         <nuxt />
       </v-container>
     </v-main>
