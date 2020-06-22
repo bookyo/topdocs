@@ -10,16 +10,18 @@ const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
 const { atTracking } = require('@keystonejs/list-plugins');
 const expressSession = require('express-session');
 const MongoStore = require('connect-mongo')(expressSession);
+require('dotenv').config();
+
 const config = {
-  endpoint: 'http://127.0.0.1:3000/admin/api',
+  endpoint: process.env.ENDPOINT,
   keystoneconfig: {
     name: "topdocs",
     secureCookies: false,
-    sessionStore: new MongoStore({ url: 'mongodb://topdocs:topdocs@127.0.0.1:27017/topdocs' }),
+    sessionStore: new MongoStore({ url: process.env.MONGOURI }),
     adapter: new Adapter({
-      mongoUri: 'mongodb://topdocs:topdocs@127.0.0.1:27017/topdocs',
+      mongoUri: process.env.MONGOURI,
     }),
-    cookieSecret: "toperdocsmyfever",
+    cookieSecret: process.env.COOKIESECRET,
     onConnect: async () => {
       const users = await keystone.lists.User.adapter.findAll();
       if (!users.length) {

@@ -30,6 +30,7 @@
     "@nuxtjs/apollo": "^4.0.0-rc17",
     "@nuxtjs/markdownit": "latest",
     "@nuxtjs/moment": "latest",
+    "dotenv": "latest",
     "connect-mongo": "^3.1.2",
     "core-js": "2.5.7",
     "cross-env": "^5.2.0",
