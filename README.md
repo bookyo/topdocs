@@ -9,6 +9,9 @@
 动态实时编辑系统，移动优先，服务端渲染，针对SEO优化。适合小到大型项目的在线文档官网。
 
 ## 更新日志
+2020年8月30日
+将所有库升级成最新版，修复无法启动和安装的问题。
+
 2020年6月18日
 分类最后一个文档可下翻到下一个分类的第一个文档。
 支持了分类第一个文档可上翻到上一个分类的最后一个文档。
@@ -51,20 +54,18 @@ cd topdocs
 yarn
 ```
 
-反代绑定一个域名并且SSL之后，比如我绑定一个域名：docs.moejj.com，编辑index.js
+反代绑定一个域名并且SSL之后，比如我绑定一个域名：docs.moejj.com，新建.env
 ```
-const config = {
-  endpoint: 'http://127.0.0.1:3000/admin/api',
-}
-find endpoint
-edit it
-endpoint: 'https://docs.moejj.com/admin/api'
+ENDPOINT=https://docs.moejj.com/admin/api
+MONGOURI=mongodb://topdocs:topdocs@127.0.0.1:27017/topdocs
+COOKIESECRET=thisismysecretcookies
 ```
 
 编译之后，开启应用：
 ```
 yarn build
-nohup yarn start &
+export NODE_ENV=production
+nohup node server.js &
 exit
 ```
 

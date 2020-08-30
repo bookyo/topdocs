@@ -10,13 +10,19 @@ const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
 const { atTracking } = require('@keystonejs/list-plugins');
 const expressSession = require('express-session');
 const MongoStore = require('connect-mongo')(expressSession);
+const {createItems} = require('@keystonejs/server-side-graphql-client');
 require('dotenv').config();
 
 const config = {
   endpoint: process.env.ENDPOINT,
   keystoneconfig: {
     name: "topdocs",
-    secureCookies: false,
+    secureCookies: process.env.NODE_ENV === 'production',
+    cookie: {
+      secure: process.env.NODE_ENV === 'production', // Default to true in production
+      maxAge: 1000 * 60 * 60 * 24 * 30, // 30 days
+      sameSite: false,
+    },
     sessionStore: new MongoStore({ url: process.env.MONGOURI }),
     adapter: new Adapter({
       mongoUri: process.env.MONGOURI,
@@ -25,8 +31,18 @@ const config = {
     onConnect: async () => {
       const users = await keystone.lists.User.adapter.findAll();
       if (!users.length) {
-        const initialData = require('./initialData');
-        await keystone.createItems(initialData);
+        await createItems({
+          keystone,
+          listName: 'User',
+          items: [{
+            data: {
+              name: 'admin',
+              email: 'admin@admin.com',
+              isAdmin: true,
+              password: 'adminadmin'
+            }
+          }]
+        })
       }
     }
   }
@@ -164,9 +180,6 @@ const authStrategy = keystone.createAuthStrategy({
 });
 
 module.exports = {
-  configureExpress: app => {
-    app.set('trust proxy', true);
-  },
   keystone,
   apps: [
     new GraphQLApp({
@@ -243,4 +256,7 @@ module.exports = {
       },
     }),
   ],
+  configureExpress: app => {
+    app.set('trust proxy', true);
+  },
 };
