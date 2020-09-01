@@ -33,7 +33,7 @@ const config = {
       if (!users.length) {
         await createItems({
           keystone,
-          listName: 'User',
+          listKey: 'User',
           items: [{
             data: {
               name: 'admin',
