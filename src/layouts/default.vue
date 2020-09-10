@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" app clipped>
+    <v-navigation-drawer v-model="drawer" app clipped disable-resize-watcher>
       <v-list shaped dense>
         <v-list-group
           color="primary"
@@ -67,7 +67,7 @@ import { mdiGithubCircle,mdiMagnify } from '@mdi/js'
 export default {
   data() {
     return {
-      drawer: this.$route.path == "/" ? false : null,
+      drawer: null,
       mdiGithubCircle,
       mdiMagnify
     };
@@ -78,6 +78,13 @@ export default {
     }
   },
   mounted() {
+    if(this.$route.path == '/') {
+      this.drawer = false;
+    } else {
+      if(window.outerWidth > 1264) {
+        this.drawer = true;
+      }
+    }
     if (document.getElementsByClassName('v-navigation-drawer__content')) {
       new SimpleBar(document.getElementsByClassName('v-navigation-drawer__content')[0]);
     }

@@ -10,7 +10,7 @@ const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
 const { atTracking } = require('@keystonejs/list-plugins');
 const expressSession = require('express-session');
 const MongoStore = require('connect-mongo')(expressSession);
-const {createItems} = require('@keystonejs/server-side-graphql-client');
+const { createItems } = require('@keystonejs/server-side-graphql-client');
 require('dotenv').config();
 
 const config = {
@@ -51,7 +51,7 @@ const keystone = new Keystone(config.keystoneconfig);
 // Access control functions
 const userIsAdmin = ({ authentication: { item: user } }) =>
   Boolean(user && user.isAdmin);
-const userOwnsItem = ({ authentication: { item: user }, existingItem}) => {
+const userOwnsItem = ({ authentication: { item: user }, existingItem }) => {
   if (!user) {
     return false;
   }
@@ -218,7 +218,7 @@ module.exports = {
           // }
         ],
         script: [
-          { src: 'https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js'}
+          { src: 'https://cdn.jsdelivr.net/npm/simplebar@5.2.1/dist/simplebar.min.js' }
         ],
       },
       /*
@@ -243,7 +243,33 @@ module.exports = {
           icons: {
             iconfont: 'mdiSvg', // default - only for display purposes
           },
-        }]],
+        }], 'nuxt-ssr-cache'],
+      cache: {
+        // if you're serving multiple host names (with differing
+        // results) from the same server, set this option to true.
+        // (cache keys will be prefixed by your host name)
+        // if your server is behind a reverse-proxy, please use
+        // express or whatever else that uses 'X-Forwarded-Host'
+        // header field to provide req.hostname (actual host name)
+        useHostPrefix: false,
+        pages: [
+          // these are prefixes of pages that need to be cached
+          // if you want to cache all pages, just include '/'
+          '/'
+        ],
+
+        store: {
+          type: 'redis',
+          host: 'localhost',
+          ttl: 10 * 60 * 60,
+          configure: [
+            // these values are configured
+            // on redis upon initialization
+            ['maxmemory', '200mb'],
+            ['maxmemory-policy', 'allkeys-lru'],
+          ],
+        },
+      },
       markdownit: {
         injected: true
       },
